@@ -1,6 +1,9 @@
-import Link from "next/link";
+import {useNavigate} from "react-router-dom";
 
 const RecipesTable = ({recipes}) => {
+
+    const navigate = useNavigate();
+
     return (
         <>
             <table className="table-auto">
@@ -14,9 +17,10 @@ const RecipesTable = ({recipes}) => {
                 {recipes.map((recipe) => (
                     <tr key={recipe.id}>
                         <td className="border px-4 py-2">
-                            <Link className="underline text-blue-300 hover:text-blue-500" href={`detail/${recipe.id}`}>
+                            <a href="#" className="underline text-blue-300 hover:text-blue-500"
+                                onClick={() => navigate(`/detail/${recipe.id}`)}>
                                 {recipe.name}
-                            </Link>
+                            </a>
                         </td>
                         <td className="border px-4 py-2 text-center">{recipe.score}</td>
                     </tr>
